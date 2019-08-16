@@ -1,5 +1,4 @@
 import React from 'react';
-import CardComponent from '../common/card.component';
 import FlipCardComponent from '../common/flip-card.component';
 
 class MemoryCardComponent extends React.Component<MemoryCardComponentProps, MemoryCardComponentState> {
@@ -12,9 +11,16 @@ class MemoryCardComponent extends React.Component<MemoryCardComponentProps, Memo
 
     render () {
         const card = this.props.card;
-        return  <FlipCardComponent>
-                    
-                </FlipCardComponent>
+        const front = this.splitTextIntoParagraphs(card.term);
+        const back = this.splitTextIntoParagraphs(card.description);
+        return  <FlipCardComponent front={front} back={back}/>    
+    }
+
+    splitTextIntoParagraphs(s: string) {
+        var lines = s.split('\n');
+        return lines.map(line => {
+            return <p>{line}</p>
+        });
     }
 }
 

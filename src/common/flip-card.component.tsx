@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import "./flip-card.component.scss";
 
-class FlipCardComponent extends React.Component<any, FlipCardComponentState> {
+class FlipCardComponent extends React.Component<FlipCardComponentProps, FlipCardComponentState> {
 
-    constructor(props: any) {
+    constructor(props: FlipCardComponentProps) {
         super(props);
 
         this.state = { isFlipped: false };
     }
 
     flip = () => {
-        console.log('Is flipped:', this.state.isFlipped);
         this.setState({isFlipped: !this.state.isFlipped});
     }
 
@@ -18,10 +17,10 @@ class FlipCardComponent extends React.Component<any, FlipCardComponentState> {
         return <div className="flip-card" onClick={this.flip}>
                     <div className={"flip-card__inner " + (this.state.isFlipped ? 'flip-card__inner--flipped' : '')}>
                         <div className="flip-card__front">
-                            FRONTD
+                            {this.props.front}
                         </div>
                         <div className="flip-card__back">
-                            BACK
+                            {this.props.back}
                         </div>
                     </div>
                 </div>
@@ -30,6 +29,11 @@ class FlipCardComponent extends React.Component<any, FlipCardComponentState> {
 
 interface FlipCardComponentState {
     isFlipped: boolean;
+}
+
+interface FlipCardComponentProps {
+    front: ReactNode;
+    back: ReactNode;
 }
 
 export default FlipCardComponent;

@@ -5,7 +5,7 @@ import './memory-cards-overview.component.scss';
 class MemoryCardsOverview extends React.Component {
 
     render () {
-        const lol = { term: "lol", description: "this is desc"};
+        const lol = { term: "lol\nneste linje", description: "this is desc \n lol da"};
         return <MemoryCardComponent card={lol}/>
     }
 }
