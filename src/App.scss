@@ -1,4 +1,9 @@
+body {
+    background: white;
+}
+
 .app {
-    margin: 0 20rem;
-    background: rgb(0, 0, 128)
+    background: rgb(0, 0, 128);
+    max-width: 360px;
+    margin: 0 auto;
 }

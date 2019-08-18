@@ -6,7 +6,7 @@ class MemoryCardsOverview extends React.Component {
 
     render () {
         const lol = { term: "lol\nneste linje", description: "this is desc \n lol da"};
-        return <MemoryCardComponent card={lol}/>
+        return <div className="memory-cards-overview" ><MemoryCardComponent card={lol}/></div>
     }
 }
 

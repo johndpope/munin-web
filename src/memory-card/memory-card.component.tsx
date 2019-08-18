@@ -13,13 +13,13 @@ class MemoryCardComponent extends React.Component<MemoryCardComponentProps, Memo
         const card = this.props.card;
         const front = this.splitTextIntoParagraphs(card.term);
         const back = this.splitTextIntoParagraphs(card.description);
-        return  <FlipCardComponent front={front} back={back}/>    
+        return  <FlipCardComponent front={front} back={back}/>
     }
 
     splitTextIntoParagraphs(s: string) {
         var lines = s.split('\n');
-        return lines.map(line => {
-            return <p>{line}</p>
+        return lines.map((line, index) => {
+            return <p key={index}>{line}</p>
         });
     }
 }
