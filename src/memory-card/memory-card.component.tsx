@@ -1,5 +1,6 @@
 import React from 'react';
 import FlipCardComponent from '../common/flip-card.component';
+import { MemoryCard } from '../models/memory-card';
 
 class MemoryCardComponent extends React.Component<MemoryCardComponentProps, MemoryCardComponentState> {
 
@@ -22,11 +23,6 @@ class MemoryCardComponent extends React.Component<MemoryCardComponentProps, Memo
             return <p key={index}>{line}</p>
         });
     }
-}
-
-interface MemoryCard {
-    term: string;
-    description: string;
 }
 
 interface MemoryCardComponentProps {
