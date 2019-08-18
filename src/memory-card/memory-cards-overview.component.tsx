@@ -1,12 +1,16 @@
 import React from 'react';
-import MemoryCardComponent from './memory-card.component';
 import './memory-cards-overview.component.scss';
+import MemoryCardsRotatorComponent from './memory-cards-rotator.component';
 
 class MemoryCardsOverview extends React.Component {
 
     render () {
-        const lol = { id: 1, term: "lol\nneste linje", description: "this is desc \n lol da"};
-        return <div className="memory-cards-overview" ><MemoryCardComponent card={lol}/></div>
+        const cards = [
+            { id: 1, term: "One", description: "this is desc \n for the first card"},
+            { id: 2, term: "Two", description: "this is desc \n for the second card"},
+            { id: 3, term: "Three", description: "this is desc \n for the third card"}
+        ];
+        return <div className="memory-cards-overview" ><MemoryCardsRotatorComponent cards={cards}/></div>
     }
 }
 

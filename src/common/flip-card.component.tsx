@@ -10,7 +10,14 @@ class FlipCardComponent extends React.Component<FlipCardComponentProps, FlipCard
     }
 
     flip = () => {
+        if (this.props.disableFlip) {
+            return;
+        }
         this.setState({isFlipped: !this.state.isFlipped});
+
+        if (this.props.onCardClicked) {
+            this.props.onCardClicked();
+        }
     }
 
     render () {
@@ -34,6 +41,8 @@ interface FlipCardComponentState {
 interface FlipCardComponentProps {
     front: ReactNode;
     back: ReactNode;
+    disableFlip?: boolean;
+    onCardClicked?: () => void;
 }
 
 export default FlipCardComponent;

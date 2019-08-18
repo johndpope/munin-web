@@ -13,7 +13,7 @@ const App = () => (
         </Switch>
       </Suspense>
     </Router>
-  </div>  
+  </div>
 );
 
 export default App;

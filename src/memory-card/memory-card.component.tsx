@@ -14,7 +14,10 @@ class MemoryCardComponent extends React.Component<MemoryCardComponentProps, Memo
         const card = this.props.card;
         const front = this.splitTextIntoParagraphs(card.term);
         const back = this.splitTextIntoParagraphs(card.description);
-        return  <FlipCardComponent front={front} back={back}/>
+        return  <FlipCardComponent  onCardClicked={this.props.onCardClicked}
+                                    disableFlip={this.props.disableFlip}
+                                    front={front}
+                                    back={back}/>
     }
 
     splitTextIntoParagraphs(s: string) {
@@ -26,7 +29,9 @@ class MemoryCardComponent extends React.Component<MemoryCardComponentProps, Memo
 }
 
 interface MemoryCardComponentProps {
-    card: MemoryCard
+    card: MemoryCard;
+    disableFlip?: boolean;
+    onCardClicked?: () => void;
 }
 
 interface MemoryCardComponentState {
