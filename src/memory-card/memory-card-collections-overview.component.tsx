@@ -1,8 +1,9 @@
 import React from 'react';
-import './memory-cards-overview.component.scss';
+import './memory-card-collections-overview.component.scss';
 import { MemoryCardCollection } from '../models/memory-card-collection';
 import { MemoryCardService } from '../http/memory-card.service';
 import CardComponent from '../common/card.component';
+import { NavLink } from 'react-router-dom';
 
 class MemoryCardCollectionsOverview extends React.Component<any, MemoryCardCollectionsOverviewState> {
 
@@ -23,7 +24,9 @@ class MemoryCardCollectionsOverview extends React.Component<any, MemoryCardColle
     render () {
         const list = this.renderCollectionList();
         return  <div className="memory-card-collections-overview">
-                    {list}
+                    <div className="memory-card-collections-overview__list">
+                        {list}
+                    </div>
                 </div>
     }
 
@@ -35,9 +38,13 @@ class MemoryCardCollectionsOverview extends React.Component<any, MemoryCardColle
         }
 
         return collections.map(collection =>
-            <CardComponent key={collection.id}>
-                    <h3>{collection.name}</h3>
-            </CardComponent>
+            <div className="memory-card-collections-overview__list-entry">
+                <CardComponent key={collection.id}>
+                    <NavLink to={`/memory-card-collection/${collection.id}`}>
+                        <h3>{collection.name}</h3>
+                    </NavLink>
+                </CardComponent>
+            </div>
         );
     }
 }

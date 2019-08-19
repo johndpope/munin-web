@@ -1,0 +1,14 @@
+.memory-card-collections-overview {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    flex-direction: row;
+
+    &__list {
+        max-width: 30rem;
+    }
+
+    &__list-entry {
+        margin-bottom: 0.5rem;
+    }
+}
