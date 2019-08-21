@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React, { Suspense, lazy } from 'react';
 import './App.scss';
-import MemoryCardCollectionComponent from './memory-card/memory-card-collection.component';
 
+const  MemoryCardCollectionComponent = lazy(() => import('./memory-card/memory-card-collection.component'));
 const MemoryCardCollectionsOverview = lazy(() => import('./memory-card/memory-card-collections-overview.component'));
 
 const App = () => (
@@ -12,6 +12,7 @@ const App = () => (
         <Switch>
           <Route exact path="/" component={MemoryCardCollectionsOverview}/>
           <Route exact path="/memory-card-collection/:id" component={MemoryCardCollectionComponent}/>
+          <Route exact path="/memory-card-collection/:id/learn" component={MemoryCardCollectionComponent}/>
         </Switch>
       </Suspense>
     </Router>

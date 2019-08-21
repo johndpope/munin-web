@@ -32,7 +32,12 @@ export class MemoryCardService {
         return Promise.resolve(MemoryCardService.collection);
     }
 
-    static getCollection = (collectionId: number) : Promise<MemoryCardCollection | undefined> => {
-        return Promise.resolve(MemoryCardService.collection.find(mcs => mcs.id === collectionId));
+    static getCollection = (collectionId: number) : Promise<MemoryCardCollection> => {
+        const collection = MemoryCardService.collection.find(mcs => mcs.id === collectionId)
+        if (collection === undefined) {
+            return Promise.reject();
+        }
+        return Promise.resolve(collection);
+
     }
 }
