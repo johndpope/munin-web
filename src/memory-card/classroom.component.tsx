@@ -21,8 +21,15 @@ class ClassroomComponent extends React.Component<ClassRoomProps, ClassRoomState>
                     </div>
         }
         return  <div className="classroom">
-                    <TermCardComponent card={cards[currentCardIndex]}/>
+                    <TermCardComponent  key={currentCardIndex}
+                                        card={cards[currentCardIndex]}
+                                        onSubmittedAnswer={this.goToNextCard}
+                    />
                 </div>
+    }
+
+    goToNextCard = () => {
+        this.setState({currentCardIndex: this.state.currentCardIndex+1});
     }
 
 }

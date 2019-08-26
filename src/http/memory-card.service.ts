@@ -3,21 +3,21 @@ import { QuestionType } from "../models/question-type";
 
 export class MemoryCardService {
     static cards1 = [
-        { id: 1, term: "Cards1 - One", description: "this is desc \n for the first card", questionType: QuestionType.Term},
-        { id: 2, term: "Cards1 - Two", description: "this is desc \n for the second card", questionType: QuestionType.Description},
-        { id: 3, term: "Cards1 - Three", description: "this is desc \n for the third card", questionType: QuestionType.All}
+        { id: 1, term: "One", description: "this is desc \n for the first card", questionType: QuestionType.Term},
+        { id: 2, term: "Two", description: "this is desc \n for the second card", questionType: QuestionType.Description},
+        { id: 3, term: "Three", description: "this is desc \n for the third card", questionType: QuestionType.All}
     ];
 
     static cards2 = [
-        { id: 4, term: "Cards2 - One", description: "this is desc \n for the first card", questionType: QuestionType.Term},
-        { id: 5, term: "Cards2 - Two", description: "this is desc \n for the second card", questionType: QuestionType.Description},
-        { id: 6, term: "Cards2 - Three", description: "this is desc \n for the third card", questionType: QuestionType.All}
+        { id: 4, term: "One", description: "this is desc \n for the first card", questionType: QuestionType.Term},
+        { id: 5, term: "Two", description: "this is desc \n for the second card", questionType: QuestionType.Description},
+        { id: 6, term: "Three", description: "this is desc \n for the third card", questionType: QuestionType.All}
     ];
 
     static cards3 = [
-        { id: 7, term: "Cards3 - One", description: "this is desc \n for the first card", questionType: QuestionType.Term},
-        { id: 8, term: "Cards3 - Two", description: "this is desc \n for the second card", questionType: QuestionType.Description},
-        { id: 9, term: "Cards3 - Three", description: "this is desc \n for the third card", questionType: QuestionType.All}
+        { id: 7, term: "One", description: "this is desc \n for the first card", questionType: QuestionType.Term},
+        { id: 8, term: "Two", description: "this is desc \n for the second card", questionType: QuestionType.Description},
+        { id: 9, term: "Three", description: "this is desc \n for the third card", questionType: QuestionType.All}
     ];
 
 
