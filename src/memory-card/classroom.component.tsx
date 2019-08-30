@@ -32,23 +32,39 @@ class ClassroomComponent extends React.Component<RouteComponentProps<ClassRoomPr
         })
     }
 
-    render() {
+    render() {        
         const cards = this.state.cards;
         const currentCardIndex = this.state.currentCardIndex;
-        if (currentCardIndex >= cards.length) {
-            return  <div className="classroom">
-                        <CardComponent>
-                            <p>Done!</p>
-                            <p>{`${this.state.nofCorrectAnswers}/${this.state.cards.length}`} correct.</p>
-                        </CardComponent>
-                    </div>
-        }
+        const mainComponent = currentCardIndex >= cards.length 
+                                ?  this.getFinishedView() 
+                                : this.getCardComponent(cards, currentCardIndex);
+
         return  <div className="classroom">
-                    <TermCardComponent  key={currentCardIndex}
-                                        card={cards[currentCardIndex]}
-                                        onSubmittedAnswer={this.goToNextCard}
-                    />
+                    <div className="classroom__header">
+                        {`${Math.min(currentCardIndex+1, cards.length)}/${cards.length}`}
+                    </div>
+                    <div className="classroom__body">
+                        {mainComponent}    
+                    </div>
+                    
                 </div>
+    }
+
+    getFinishedView() {
+        return (
+            <CardComponent>
+                <p>Done!</p>
+                <p>{`${this.state.nofCorrectAnswers}/${this.state.cards.length}`} correct.</p>
+            </CardComponent>
+        );
+    }
+
+    getCardComponent = (cards: MemoryCard[], currentCardIndex: number) => {
+        return (<TermCardComponent  
+                    key={currentCardIndex}
+                    card={cards[currentCardIndex]}
+                    onSubmittedAnswer={this.goToNextCard}
+                    />);
     }
 
     goToNextCard = (wasCorrect: boolean) => {
