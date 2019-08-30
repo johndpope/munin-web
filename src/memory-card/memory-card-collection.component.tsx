@@ -4,6 +4,7 @@ import CardComponent from '../common/card.component';
 import { MemoryCardService } from '../http/memory-card.service';
 import ClassroomComponent from './classroom.component';
 import { MemoryCardCollection } from '../models/memory-card-collection';
+import { NavLink } from 'react-router-dom';
 
 class MemoryCardCollectionComponent extends Component<RouteComponentProps<MemoryCardCollectionProps>, MemoryCardCollectionState> {
 
@@ -35,8 +36,14 @@ class MemoryCardCollectionComponent extends Component<RouteComponentProps<Memory
         }
 
         return  (<div>
-                    <CardComponent><h1>{collection.name}</h1></CardComponent>
-                    {collection ? <ClassroomComponent cards={collection.memoryCards}/> : null}
+                    <CardComponent>
+                        <h1>{collection.name}</h1>
+                        <div>
+                            <NavLink to={`/memory-card-collection/${collection.id}/classroom`}>
+                                Learn
+                            </NavLink>
+                        </div>
+                    </CardComponent>                    
                 </div>);
     }
 

@@ -5,8 +5,6 @@ import './term-card.component.scss';
 
 class TermCardComponent extends Component<TermCardComponentProps, TermCardComponentState> {
 
-    readonly DELAY_BEFORE_NEXT_CARD = 2000;
-
     constructor(props: TermCardComponentProps) {
         super(props);
         this.state = {hasSubmitted: false, isCorrectAnswer: false, answer: ''};
@@ -19,7 +17,7 @@ class TermCardComponent extends Component<TermCardComponentProps, TermCardCompon
             <div className="term-card">
                 <CardComponent>
                     <div className="term-card__description">{description}</div>
-                    {this.state.hasSubmitted ? this.getAnswerView() : null }
+                    {this.state.hasSubmitted ? this.getResultView() : null }
                     {!this.state.hasSubmitted ?
                         <form onSubmit={this.handleSubmit}>
                             <input type="text" name="term" value={this.state.answer} onChange={this.handleChange}/>
@@ -31,23 +29,24 @@ class TermCardComponent extends Component<TermCardComponentProps, TermCardCompon
     }
 
     handleSubmit = (event: any) => {
+        const isCorrectAnswer = this.props.card.term === this.state.answer;
         this.setState({hasSubmitted: true})
-        this.setState({isCorrectAnswer: this.props.card.term === this.state.answer})
+        this.setState({isCorrectAnswer: isCorrectAnswer})
         event.preventDefault();
 
-        setTimeout(() => this.props.onSubmittedAnswer(), this.DELAY_BEFORE_NEXT_CARD);
+        this.props.onSubmittedAnswer(isCorrectAnswer)
     }
 
     handleChange = (event: any) => {
         this.setState({answer: event.target.value})
     }
 
-    getAnswerView() {
+    getResultView() {
         if (this.state.isCorrectAnswer) {
-            return <div className="term-card__term term-card__term--correct">Correct!</div>
+            return <div className="term-card__result term-card__result--correct">Correct!</div>
         }
         return (
-            <div className="term-card__term term-card__term--incorrect">
+            <div className="term-card__result term-card__result--incorrect">
                 Wrong answer.<br/>
                 Correct: {this.props.card.term}
             </div>
@@ -65,7 +64,7 @@ function splitTextIntoParagraphs(s: string) {
 
 interface TermCardComponentProps {
     card: MemoryCard;
-    onSubmittedAnswer: () => void
+    onSubmittedAnswer: (isCorrectAnswer: boolean) => void
 }
 
 interface TermCardComponentState {

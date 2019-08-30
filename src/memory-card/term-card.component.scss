@@ -1,3 +1,13 @@
 .term-card {
-    color: black
+    color: black;
+
+    &__result {
+        &--correct {
+            color: green;
+        }
+        &--incorrect {
+            color: red;
+        }
+
+    }
 }
