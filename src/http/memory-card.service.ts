@@ -1,7 +1,12 @@
 import { MemoryCardCollection } from "../models/memory-card-collection";
 import { QuestionType } from "../models/question-type";
+import axios from 'axios';
 
 export class MemoryCardService {
+
+    static host = 'http://localhost:5000/memorycardsets';
+            
+
     static cards1 = [
         { id: 1, term: "One", description: "this is desc \n for the first card", questionType: QuestionType.Term},
         { id: 2, term: "Two", description: "this is desc \n for the second card", questionType: QuestionType.Description},
@@ -22,22 +27,30 @@ export class MemoryCardService {
 
 
     static collection : MemoryCardCollection[] = [
-        { id: 1, name: 'First collection', memoryCards: MemoryCardService.cards1, createdAt: new Date(), createdBy: 'testmann'},
-        { id: 2, name: 'Second collection', memoryCards: MemoryCardService.cards2, createdAt: new Date(), createdBy: 'testmann'},
-        { id: 3, name: 'Third collection', memoryCards: MemoryCardService.cards3, createdAt: new Date(), createdBy: 'testmann'}
+        { memoryCardSetId: 1, name: 'First collection', memoryCards: MemoryCardService.cards1, createdAt: new Date(), createdBy: 'testmann'},
+        { memoryCardSetId: 2, name: 'Second collection', memoryCards: MemoryCardService.cards2, createdAt: new Date(), createdBy: 'testmann'},
+        { memoryCardSetId: 3, name: 'Third collection', memoryCards: MemoryCardService.cards3, createdAt: new Date(), createdBy: 'testmann'}
     ]
 
 
-    static getAllCollections = () : Promise<MemoryCardCollection[]> => {
-        return Promise.resolve(MemoryCardService.collection);
+    static async getAllCollections () : Promise<MemoryCardCollection[]> {
+        try {
+            const test = await axios.get<MemoryCardCollection[]>(MemoryCardService.host);  
+            return Promise.resolve(test.data);
+        }
+        catch(e) {
+            throw e;
+        }
+        
     }
 
-    static getCollection = (collectionId: number) : Promise<MemoryCardCollection> => {
-        const collection = MemoryCardService.collection.find(mcs => mcs.id === collectionId)
-        if (collection === undefined) {
-            return Promise.reject();
+    static async getCollection (collectionId: number) : Promise<MemoryCardCollection> {
+        try {
+            const test = await axios.get<MemoryCardCollection>(`${MemoryCardService.host}/${collectionId}`);  
+            return Promise.resolve(test.data);
         }
-        return Promise.resolve(collection);
-
+        catch(e) {
+            throw e;
+        }
     }
 }

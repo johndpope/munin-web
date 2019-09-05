@@ -1,7 +1,7 @@
 import { MemoryCard } from "./memory-card";
 
 export interface MemoryCardCollection {
-    id: number;
+    memoryCardSetId: number;
     name: string;
     memoryCards: MemoryCard[];
     createdAt: Date;

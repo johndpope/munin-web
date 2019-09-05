@@ -36,11 +36,10 @@ class MemoryCardCollectionsOverview extends React.Component<any, MemoryCardColle
         if (collections.length === 0) {
             return <h2>No collections found.</h2>
         }
-
         return collections.map(collection =>
-            <div className="memory-card-collections-overview__list-entry">
-                <CardComponent key={collection.id}>
-                    <NavLink to={`/memory-card-collection/${collection.id}`}>
+            <div key={collection.memoryCardSetId} className="memory-card-collections-overview__list-entry">
+                <CardComponent key={collection.memoryCardSetId}>
+                    <NavLink to={`/memory-card-collection/${collection.memoryCardSetId}`}>
                         <h3>{collection.name}</h3>
                     </NavLink>
                 </CardComponent>
