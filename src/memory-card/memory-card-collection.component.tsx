@@ -14,18 +14,15 @@ class MemoryCardCollectionComponent extends Component<RouteComponentProps<Memory
         this.state = { collection: null };
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         const id = this.props.match.params.id ? parseInt(this.props.match.params.id) : null;
 
         if (id === null) {
             return;
         }
 
-        MemoryCardService.getCollection(id).then((c) => {
-            this.setState({collection: c})
-        }).catch(() => {
-
-        })
+        const collection = await MemoryCardService.getCollection(id);
+        this.setState({collection: collection});
     }
 
     render() {
@@ -38,11 +35,16 @@ class MemoryCardCollectionComponent extends Component<RouteComponentProps<Memory
         return  (<div>
                     <CardComponent>
                         <h1>{collection.name}</h1>
-                        <div>
+                        <p>
+                            <NavLink to={`/memory-card-collection/${collection.memoryCardSetId}/edit`}>
+                                Edit
+                            </NavLink>
+                        </p> 
+                        <p>
                             <NavLink to={`/memory-card-collection/${collection.memoryCardSetId}/classroom`}>
                                 Learn
                             </NavLink>
-                        </div>
+                        </p>                        
                     </CardComponent>                    
                 </div>);
     }
