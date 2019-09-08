@@ -4,13 +4,14 @@ import { MemoryCardService } from '../http/memory-card.service';
 import { MemoryCardCollection } from '../models/memory-card-collection';
 import { MemoryCard } from '../models/memory-card';
 import CardComponent from '../common/card.component';
+import EditCardComponent from '../common/edit-card-component';
 
 class EditMemoryCardCollectionComponent extends Component<RouteComponentProps<EditMemoryCardCollectionProps>, EditMemoryCardCollectionState> {
 
     constructor(props: RouteComponentProps<EditMemoryCardCollectionProps>) {
         super(props);
 
-        this.state = { collection: null };
+        this.state = { collection: { name: '', memoryCards: [], memoryCardSetId: 0}, memoryCards: [] };
     }
 
     async componentDidMount() {
@@ -26,12 +27,12 @@ class EditMemoryCardCollectionComponent extends Component<RouteComponentProps<Ed
     render() {
         const collection = this.state.collection;
 
-        if (collection === null) {
+        if (collection.memoryCardSetId === 0) {
             return <h1>Loading...</h1>
         }
 
         return  (
-            <div>
+            <div className="edit-memory-card-collection">
                 <h1>{collection.name}</h1>
                 {this.renderCards(collection.memoryCards)}
             </div>
@@ -39,13 +40,24 @@ class EditMemoryCardCollectionComponent extends Component<RouteComponentProps<Ed
         
     }
 
-    renderCards(cards : MemoryCard[]) {
-        return cards.map(card => 
-            <CardComponent key={card.memoryCardId}>
-                <p>{card.term}</p>
-                <p>{card.description}</p>
-            </CardComponent>                
+    renderCards(cards : MemoryCard[]) {        
+        return cards.map(card => {
+                return <EditCardComponent   key={card.memoryCardId} 
+                                            card={card}
+                                            onChangeSubmit={this.submitCard}/>
+            }            
         );
+    }
+
+    submitCard = (updatedMemoryCard: MemoryCard) => {
+        console.log(updatedMemoryCard);
+        this.setState(prevState => ({
+                memoryCards: {
+                    ...prevState.collection.memoryCards,
+                    [prevState.collection.memoryCards[0].term]: 'lolda'
+                }
+        }));
+        
     }
 
 }
@@ -58,7 +70,8 @@ interface EditMemoryCardCollectionProps {
 
 
 interface EditMemoryCardCollectionState {
-    collection: MemoryCardCollection | null
+    collection: MemoryCardCollection,
+    memoryCards: MemoryCard[]
 }
 
 
