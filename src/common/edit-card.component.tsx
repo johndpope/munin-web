@@ -24,8 +24,7 @@ class EditCardComponent extends React.Component<EditCardProps, EditCardState> {
                                     name={'term'} 
                                     value={this.state.term} 
                                     onChange={this.handleChange} 
-                                    onBlur={this.handleSubmit}
-                                    onKeyPress={this.handleKeyPress}/>
+                                    onBlur={this.handleSubmit}/>
                         </label>
                         <label className="form-group form-group--column" htmlFor={descriptionId}>
                             Description:
@@ -34,8 +33,7 @@ class EditCardComponent extends React.Component<EditCardProps, EditCardState> {
                                     name={'description'} 
                                     value={this.state.description} 
                                     onChange={this.handleChange}
-                                    onBlur={this.handleSubmit}
-                                    onKeyPress={this.handleKeyPress}/> 
+                                    onBlur={this.handleSubmit}/> 
                         </label>
                     </div>                    
                 </CardComponent>
@@ -60,14 +58,8 @@ class EditCardComponent extends React.Component<EditCardProps, EditCardState> {
                 memoryCardId: this.props.card.memoryCardId,
                 term: this.state.term,
                 description: this.state.description
-            })
+            });
         }        
-    }
-
-    handleKeyPress = (e: React.KeyboardEvent) => {
-        if (e.key === 'Enter') {
-            this.handleSubmit();
-        }
     }
 
     hasChanged = () => {

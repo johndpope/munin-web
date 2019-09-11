@@ -11,11 +11,11 @@ const ExpandingTextarea = (props : ExpandingTextFieldProps & React.HTMLProps<HTM
 
 function updateHeight(el: HTMLTextAreaElement | null) {
     if (!el) return;
-    const { borderBottomWidth,
+    /*const { borderBottomWidth,
         borderTopWidth,
         lineHeight,
         paddingBottom,        
-        paddingTop } = window.getComputedStyle(el as Element);
+        paddingTop } = window.getComputedStyle(el as Element); */
     el.style.height = '0';
     const totalHeight =  el.scrollHeight;
     el.style.height = `${totalHeight}px`;        

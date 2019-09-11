@@ -48,14 +48,15 @@ class EditMemoryCardCollectionComponent extends Component<RouteComponentProps<Ed
         );
     }
 
-    submitCard = (updatedMemoryCard: MemoryCard) => {
+    async submitCard (updatedMemoryCard: MemoryCard) {
         console.log(updatedMemoryCard);
-        this.setState(prevState => ({
+        await MemoryCardService.UpdateMemoryCard(updatedMemoryCard);
+        /*this.setState(prevState => ({
                 memoryCards: {
                     ...prevState.collection.memoryCards,
                     [prevState.collection.memoryCards[0].term]: 'lolda'
                 }
-        }));
+        }));*/
         
     }
 
