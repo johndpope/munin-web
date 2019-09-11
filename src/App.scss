@@ -8,3 +8,15 @@ body {
     max-width: 70rem;
     margin: 0 auto;
 }
+
+.form-group {
+    &--column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input {
+        max-width: 30rem;
+    }
+    padding-bottom: 0.5rem;
+}

@@ -1,6 +1,9 @@
 import React from 'react';
 import { MemoryCard } from "../models/memory-card";
 import CardComponent from './card.component';
+import './edit-card.component.scss';
+import ExpandingTextField from '../util/expanding-text-field.component';
+import ExpandingTextarea from '../util/expanding-text-field.component';
 
 class EditCardComponent extends React.Component<EditCardProps, EditCardState> {    
     constructor(props: EditCardProps) {
@@ -13,28 +16,32 @@ class EditCardComponent extends React.Component<EditCardProps, EditCardState> {
         const termId = `term-${this.props.card.memoryCardId}`;
         const descriptionId  = `description-${this.props.card.memoryCardId}`;
         return <CardComponent key={this.props.card.memoryCardId}>
-                    <label htmlFor={termId}>
-                        Term
-                        <input  id={termId} 
-                                name={'term'} 
-                                value={this.state.term} 
-                                onChange={this.handleChange} 
-                                onBlur={this.handleSubmit}
-                                onKeyPress={this.handleKeyPress}/>
-                    </label>
-                    <label htmlFor={descriptionId}>
-                        Description
-                        <input  id={descriptionId} 
-                                name={'description'} 
-                                value={this.state.description} 
-                                onChange={this.handleChange}
-                                onBlur={this.handleSubmit}
-                                onKeyPress={this.handleKeyPress}/> 
-                    </label>
+                    <div className="edit-card">
+                        <label className="form-group form-group--column" htmlFor={termId}>
+                            Term:
+                            <ExpandingTextarea  
+                                    id={termId} 
+                                    name={'term'} 
+                                    value={this.state.term} 
+                                    onChange={this.handleChange} 
+                                    onBlur={this.handleSubmit}
+                                    onKeyPress={this.handleKeyPress}/>
+                        </label>
+                        <label className="form-group form-group--column" htmlFor={descriptionId}>
+                            Description:
+                            <ExpandingTextarea 
+                                    id={descriptionId} 
+                                    name={'description'} 
+                                    value={this.state.description} 
+                                    onChange={this.handleChange}
+                                    onBlur={this.handleSubmit}
+                                    onKeyPress={this.handleKeyPress}/> 
+                        </label>
+                    </div>                    
                 </CardComponent>
     }
 
-    handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>  {
+    handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) =>  {
         if (e.target.name === 'term')  {
             this.setState({ term : e.target.value});
         }            
