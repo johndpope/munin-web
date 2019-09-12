@@ -1,7 +1,7 @@
 import React from 'react';
 import './memory-card-collections-overview.component.scss';
 import { MemoryCardCollection } from '../models/memory-card-collection';
-import { MemoryCardService } from '../http/memory-card.service';
+import { MemoryCardSetService } from '../http/memory-card-set.service';
 import CardComponent from '../common/card.component';
 import { NavLink } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ class MemoryCardCollectionsOverview extends React.Component<any, MemoryCardColle
     }
 
     async componentDidMount() {
-        var collections = await MemoryCardService.getAllCollections();
+        var collections = await MemoryCardSetService.getAllCollections();
 
         if (collections) {
             this.setState({memoryCardCollections: collections});

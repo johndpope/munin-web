@@ -3,7 +3,7 @@ import { MemoryCard } from '../models/memory-card';
 import './classroom.component.scss'
 import TermCardComponent from './term-card.component';
 import { RouteComponentProps } from 'react-router';
-import { MemoryCardService } from '../http/memory-card.service';
+import { MemoryCardSetService } from '../http/memory-card-set.service';
 import CardComponent from '../common/card.component';
 
 class ClassroomComponent extends React.Component<RouteComponentProps<ClassRoomProps>, ClassRoomState> {
@@ -24,7 +24,7 @@ class ClassroomComponent extends React.Component<RouteComponentProps<ClassRoomPr
             return;
         }
 
-        MemoryCardService.getCollection(id).then((c) => {
+        MemoryCardSetService.getCollection(id).then((c) => {
             console.log(c);
             this.setState({cards: c.memoryCards})
         }).catch(() => {

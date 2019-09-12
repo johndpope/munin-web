@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import { RouteComponentProps } from 'react-router';
 import CardComponent from '../common/card.component';
-import { MemoryCardService } from '../http/memory-card.service';
-import ClassroomComponent from './classroom.component';
+import { MemoryCardSetService } from '../http/memory-card-set.service';
 import { MemoryCardCollection } from '../models/memory-card-collection';
 import { NavLink } from 'react-router-dom';
 
@@ -21,7 +20,7 @@ class MemoryCardCollectionComponent extends Component<RouteComponentProps<Memory
             return;
         }
 
-        const collection = await MemoryCardService.getCollection(id);
+        const collection = await MemoryCardSetService.getCollection(id);
         this.setState({collection: collection});
     }
 
@@ -39,13 +38,13 @@ class MemoryCardCollectionComponent extends Component<RouteComponentProps<Memory
                             <NavLink to={`/memory-card-collection/${collection.memoryCardSetId}/edit`}>
                                 Edit
                             </NavLink>
-                        </p> 
+                        </p>
                         <p>
                             <NavLink to={`/memory-card-collection/${collection.memoryCardSetId}/classroom`}>
                                 Learn
                             </NavLink>
-                        </p>                        
-                    </CardComponent>                    
+                        </p>
+                    </CardComponent>
                 </div>);
     }
 
