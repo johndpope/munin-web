@@ -34,8 +34,8 @@ class EditMemoryCardCollectionComponent extends Component<RouteComponentProps<Ed
         return  (
             <div className="edit-memory-card-collection">
                 <h1>{collection.name}</h1>
-                {this.renderCards(collection.memoryCards)}
                 <button onClick={this.createEmptyCard} type="button">+</button>
+                {this.renderCards(collection.memoryCards)}
             </div>
         );
 
@@ -57,7 +57,7 @@ class EditMemoryCardCollectionComponent extends Component<RouteComponentProps<Ed
     createEmptyCard = async () => {
         const newCard = await MemoryCardSetService.AddEmptyMemoryCard(this.state.collection.memoryCardSetId);
         const memCards = [...this.state.collection.memoryCards];
-        memCards.push(newCard);
+        memCards.unshift(newCard);
         this.setState(prevState => ({
             collection: {
                 ...prevState.collection,
