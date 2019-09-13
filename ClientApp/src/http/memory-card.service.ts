@@ -1,4 +1,3 @@
-import { MemoryCardCollection } from "../models/memory-card-collection";
 import axios from 'axios';
 import { MemoryCard } from "../models/memory-card";
 import Config from "./config";

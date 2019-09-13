@@ -9,16 +9,18 @@ const EditMemoryCardCollectionComppnent = lazy(() => import('./pages/edit-memory
 
 const App = () => (
   <div className="app">
-    <Router>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Switch>
-          <Route exact path="/" component={MemoryCardCollectionsOverview}/>
-          <Route exact path="/memory-card-collection/:id" component={MemoryCardCollectionComponent}/>
-          <Route exact path="/memory-card-collection/:collectionId/classroom" component={ClassroomComponent}/>
-          <Route exact path="/memory-card-collection/:collectionId/edit" component={EditMemoryCardCollectionComppnent}/>
-        </Switch>
-      </Suspense>
-    </Router>
+    <main>
+      <Router>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            <Route exact path="/" component={MemoryCardCollectionsOverview}/>
+            <Route exact path="/memory-card-collection/:id" component={MemoryCardCollectionComponent}/>
+            <Route exact path="/memory-card-collection/:collectionId/classroom" component={ClassroomComponent}/>
+            <Route exact path="/memory-card-collection/:collectionId/edit" component={EditMemoryCardCollectionComppnent}/>
+          </Switch>
+        </Suspense>
+      </Router>
+    </main>
   </div>
 );
 

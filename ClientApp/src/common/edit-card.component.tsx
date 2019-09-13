@@ -2,10 +2,9 @@ import React from 'react';
 import { MemoryCard } from "../models/memory-card";
 import CardComponent from './card.component';
 import './edit-card.component.scss';
-import ExpandingTextField from '../util/expanding-text-field.component';
 import ExpandingTextarea from '../util/expanding-text-field.component';
 
-class EditCardComponent extends React.Component<EditCardProps, EditCardState> {    
+class EditCardComponent extends React.Component<EditCardProps, EditCardState> {
     constructor(props: EditCardProps) {
         super(props);
 
@@ -19,38 +18,38 @@ class EditCardComponent extends React.Component<EditCardProps, EditCardState> {
                     <div className="edit-card">
                         <label className="form-group form-group--column" htmlFor={termId}>
                             Term:
-                            <ExpandingTextarea  
-                                    id={termId} 
-                                    name={'term'} 
-                                    value={this.state.term} 
-                                    onChange={this.handleChange} 
+                            <ExpandingTextarea
+                                    id={termId}
+                                    name={'term'}
+                                    value={this.state.term}
+                                    onChange={this.handleChange}
                                     onBlur={this.handleSubmit}/>
                         </label>
                         <label className="form-group form-group--column" htmlFor={descriptionId}>
                             Description:
-                            <ExpandingTextarea 
-                                    id={descriptionId} 
-                                    name={'description'} 
-                                    value={this.state.description} 
+                            <ExpandingTextarea
+                                    id={descriptionId}
+                                    name={'description'}
+                                    value={this.state.description}
                                     onChange={this.handleChange}
-                                    onBlur={this.handleSubmit}/> 
+                                    onBlur={this.handleSubmit}/>
                         </label>
-                    </div>                    
+                    </div>
                 </CardComponent>
     }
 
     handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) =>  {
         if (e.target.name === 'term')  {
             this.setState({ term : e.target.value});
-        }            
+        }
         else if (e.target.name === 'description') {
             this.setState({ description : e.target.value});
         }
         else {
             console.error('Trying to update noexisting field', e.target.name);
-        }        
+        }
     }
-    
+
 
     handleSubmit = () => {
         if (this.hasChanged()) {
@@ -59,7 +58,7 @@ class EditCardComponent extends React.Component<EditCardProps, EditCardState> {
                 term: this.state.term,
                 description: this.state.description
             });
-        }        
+        }
     }
 
     hasChanged = () => {

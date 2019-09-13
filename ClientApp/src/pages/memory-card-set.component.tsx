@@ -32,8 +32,8 @@ class MemoryCardCollectionComponent extends Component<RouteComponentProps<Memory
         }
 
         return  (<div>
+                    <h1>{collection.name}</h1>
                     <CardComponent>
-                        <h1>{collection.name}</h1>
                         <p>
                             <NavLink to={`/memory-card-collection/${collection.memoryCardSetId}/edit`}>
                                 Edit
