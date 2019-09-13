@@ -1,7 +1,7 @@
 import React from 'react';
 import { MemoryCard } from '../models/memory-card';
 import './classroom.component.scss'
-import TermCardComponent from './term-card.component';
+import TermCardComponent from '../memory-card/term-card.component';
 import { RouteComponentProps } from 'react-router';
 import { MemoryCardSetService } from '../http/memory-card-set.service';
 import CardComponent from '../common/card.component';
@@ -32,11 +32,11 @@ class ClassroomComponent extends React.Component<RouteComponentProps<ClassRoomPr
         })
     }
 
-    render() {        
+    render() {
         const cards = this.state.cards;
         const currentCardIndex = this.state.currentCardIndex;
-        const mainComponent = currentCardIndex >= cards.length 
-                                ?  this.getFinishedView() 
+        const mainComponent = currentCardIndex >= cards.length
+                                ?  this.getFinishedView()
                                 : this.getCardComponent(cards, currentCardIndex);
 
         return  <div className="classroom">
@@ -44,9 +44,9 @@ class ClassroomComponent extends React.Component<RouteComponentProps<ClassRoomPr
                         {`${Math.min(currentCardIndex+1, cards.length)}/${cards.length}`}
                     </div>
                     <div className="classroom__body">
-                        {mainComponent}    
+                        {mainComponent}
                     </div>
-                    
+
                 </div>
     }
 
@@ -60,7 +60,7 @@ class ClassroomComponent extends React.Component<RouteComponentProps<ClassRoomPr
     }
 
     getCardComponent = (cards: MemoryCard[], currentCardIndex: number) => {
-        return (<TermCardComponent  
+        return (<TermCardComponent
                     key={currentCardIndex}
                     card={cards[currentCardIndex]}
                     onSubmittedAnswer={this.goToNextCard}

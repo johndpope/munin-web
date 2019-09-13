@@ -2,9 +2,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React, { Suspense, lazy } from 'react';
 import './App.scss';
 
-const  MemoryCardCollectionComponent = lazy(() => import('./memory-card/memory-card-collection.component'));
-const MemoryCardCollectionsOverview = lazy(() => import('./memory-card/memory-card-collections-overview.component'));
-const ClassroomComponent = lazy(() => import('./memory-card/classroom.component'));
+const  MemoryCardCollectionComponent = lazy(() => import('./pages/memory-card-set.component'));
+const MemoryCardCollectionsOverview = lazy(() => import('./pages/memory-card-sets-overview.component'));
+const ClassroomComponent = lazy(() => import('./pages/classroom.component'));
 const EditMemoryCardCollectionComppnent = lazy(() => import('./pages/edit-memory-card-collection.component'));
 
 const App = () => (
