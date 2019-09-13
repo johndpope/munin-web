@@ -1,11 +1,11 @@
 import { MemoryCardCollection } from "../models/memory-card-collection";
 import axios from 'axios';
-import Config from "./config";
 import { MemoryCard } from "../models/memory-card";
+import Config from "../config";
 
 export class MemoryCardSetService {
 
-    static host = `${Config.BASE_URL}/memorycardsets`;
+    static host = `${Config.API_HOSTNAME}/memorycardsets`;
 
     static async getAllCollections () : Promise<MemoryCardCollection[]> {
         try {

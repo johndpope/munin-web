@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { MemoryCard } from "../models/memory-card";
-import Config from "./config";
+import Config from '../config';
 
 export class MemoryCardService {
 
-    static host = `${Config.BASE_URL}/memorycards`;
+    static host = `${Config.API_HOSTNAME}/memorycards`;
 
     static async UpdateMemoryCard(memoryCard: MemoryCard) {
         try {
