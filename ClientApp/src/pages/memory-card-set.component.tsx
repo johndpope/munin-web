@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { RouteComponentProps } from 'react-router';
 import CardComponent from '../common/card.component';
-import { MemoryCardSetService } from '../http/memory-card-set.service';
+import { MemoryCardSetService } from '../services/memory-card-set.service';
 import { MemoryCardCollection } from '../models/memory-card-collection';
 import { NavLink } from 'react-router-dom';
 

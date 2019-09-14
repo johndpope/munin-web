@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import { RouteComponentProps } from 'react-router';
-import { MemoryCardSetService } from '../http/memory-card-set.service';
+import { MemoryCardSetService } from '../services/memory-card-set.service';
 import { MemoryCardCollection } from '../models/memory-card-collection';
 import { MemoryCard } from '../models/memory-card';
 import EditCardComponent from '../common/edit-card.component';
-import { MemoryCardService } from '../http/memory-card.service';
+import { MemoryCardService } from '../services/memory-card.service';
 
 class EditMemoryCardCollectionComponent extends Component<RouteComponentProps<EditMemoryCardCollectionProps>, EditMemoryCardCollectionState> {
 

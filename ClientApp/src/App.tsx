@@ -3,15 +3,15 @@ import React, { Suspense, lazy } from 'react';
 import './App.scss';
 import PrivateRoute from './util/private-route.component';
 
-const  Login = lazy(() => import('./pages/login.component'));
+const  Login = lazy(() => import('./pages/login.page'));
 const  MemoryCardCollectionComponent = lazy(() => import('./pages/memory-card-set.component'));
 const MemoryCardCollectionsOverview = lazy(() => import('./pages/memory-card-sets-overview.component'));
 const ClassroomComponent = lazy(() => import('./pages/classroom.component'));
 const EditMemoryCardCollectionComppnent = lazy(() => import('./pages/edit-memory-card-collection.component'));
 
 const IsLoggedIn = () => {
-  console.log('Yea, you are logged in...');
-  return false;
+  const token = localStorage.getItem('token');
+  return token !== null;
 }
 
 const App = () => (

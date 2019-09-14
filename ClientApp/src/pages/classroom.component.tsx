@@ -3,7 +3,7 @@ import { MemoryCard } from '../models/memory-card';
 import './classroom.component.scss'
 import TermCardComponent from '../memory-card/term-card.component';
 import { RouteComponentProps } from 'react-router';
-import { MemoryCardSetService } from '../http/memory-card-set.service';
+import { MemoryCardSetService } from '../services/memory-card-set.service';
 import CardComponent from '../common/card.component';
 
 class ClassroomComponent extends React.Component<RouteComponentProps<ClassRoomProps>, ClassRoomState> {
