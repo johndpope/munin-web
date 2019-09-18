@@ -70,7 +70,7 @@ export class Login extends Component {
             case AuthenticationResultStatus.Redirect:
                 break;
             case AuthenticationResultStatus.Success:
-                await this.navigateToReturnUrl(returnUrl);
+                this.navigateToReturnUrl(returnUrl);
                 break;
             case AuthenticationResultStatus.Fail:
                 this.setState({ message: result.message });

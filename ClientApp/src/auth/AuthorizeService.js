@@ -84,7 +84,7 @@ export class AuthorizeService {
             const user = await this.userManager.signinCallback(url);
             this.updateState(user);
             return this.success(user && user.state);
-        } catch (error) {
+        } catch (error) {            
             console.log('There was an error signing in: ', error);
             return this.error('There was an error signing in.');
         }
@@ -175,12 +175,12 @@ export class AuthorizeService {
             return;
         }
 
-        let response = await fetch(ApplicationPaths.ApiAuthorizationClientConfigurationUrl);
+        const response = await fetch(ApplicationPaths.ApiAuthorizationClientConfigurationUrl);
         if (!response.ok) {
             throw new Error(`Could not load settings for '${ApplicationName}'`);
         }
 
-        let settings = await response.json();
+        const settings = await response.json();
         settings.automaticSilentRenew = true;
         settings.includeIdTokenInSilentRenew = true;
         settings.userStore = new WebStorageStateStore({
