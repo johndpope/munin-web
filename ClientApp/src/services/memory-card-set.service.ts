@@ -1,15 +1,22 @@
 import { MemoryCardCollection } from "../models/memory-card-collection";
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import { MemoryCard } from "../models/memory-card";
 import Config from "../config";
+import authService from "../auth/AuthorizeService";
 
 export class MemoryCardSetService {
 
     static host = `${Config.API_HOSTNAME}/memorycardsets`;
 
     static async getAllCollections () : Promise<MemoryCardCollection[]> {
+        const token = await authService.getAccessToken();
+        const config : AxiosRequestConfig = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        };
         try {
-            return Promise.resolve((await axios.get<MemoryCardCollection[]>(MemoryCardSetService.host)).data);
+            return Promise.resolve((await axios.get<MemoryCardCollection[]>(MemoryCardSetService.host, config)).data);
         }
         catch(e) {
             throw e;

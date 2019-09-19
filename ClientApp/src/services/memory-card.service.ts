@@ -14,5 +14,5 @@ export class MemoryCardService {
         catch(e) {
             throw e;
         }
-    }
+    }    
 }
